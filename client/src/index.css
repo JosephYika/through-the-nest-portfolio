@@ -192,6 +192,7 @@
 .hero-bg {
   background-size: cover;
   background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .lightbox {
@@ -314,7 +315,7 @@ img[loading="lazy"] {
 /* Desktop-only hero background positioning - subtle right adjustment */
 @media (min-width: 1024px) {
   .hero-bg {
-    background-position: calc(50% + 25px) calc(50% + 150px) !important;
+    background-position: 55% calc(50% + 150px) !important;
   }
 }
 
