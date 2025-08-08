@@ -312,6 +312,13 @@ img[loading="lazy"] {
   }
 }
 
+/* Mobile hero background positioning - centered */
+@media (max-width: 1023px) {
+  .hero-desktop-position {
+    background-position: center center !important;
+  }
+}
+
 /* Desktop-specific hero background positioning */
 @media (min-width: 1024px) {
   .hero-desktop-position {
