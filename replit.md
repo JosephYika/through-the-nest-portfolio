@@ -2,6 +2,15 @@
 
 "Through The Nest" is a photography portfolio website built as a full-stack application. It's a modern, responsive platform showcasing professional photography services including weddings, portraits, cultural events, and lifestyle photography. The site features a comprehensive portfolio gallery, service offerings, contact forms, and client testimonials, all designed with a focus on visual storytelling and user experience.
 
+## Recent Changes (August 8, 2025)
+- ✓ Successfully pushed complete project to GitHub: https://github.com/JosephYika/through-the-nest-portfolio
+- ✓ Updated contact information: Austin as Editor in Chief, Leicester UK location, UK phone number
+- ✓ Optimized all images to webp format for better performance
+- ✓ Implemented comprehensive lazy loading with intersection observer
+- ✓ Updated services pricing to UK pounds (£350, £2,200, £950)
+- ✓ Enhanced About section with professional portrait and UK experience details
+- ✓ Fixed location display: "Based in Leicester, UK - Available Worldwide"
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
