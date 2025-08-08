@@ -323,10 +323,5 @@ img[loading="lazy"] {
   .hero-bg {
     background-position: 55% center !important;
   }
-  
-  /* Move arrow 1 pixel left on desktop only */
-  .hero-arrow {
-    transform: translateX(-50%) translateX(-1px) !important;
-  }
 }
 
