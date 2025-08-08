@@ -311,5 +311,10 @@ img[loading="lazy"] {
   }
 }
 
-
+/* Desktop-only hero background positioning - move image slightly right */
+@media (min-width: 1024px) {
+  .hero-bg {
+    background-position: 55% center !important;
+  }
+}
 
