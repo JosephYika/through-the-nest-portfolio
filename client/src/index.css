@@ -329,9 +329,9 @@ img[loading="lazy"] {
     transform: translateX(-50%) translateX(-1px) !important;
   }
   
-  /* Move hero buttons slightly left on desktop only */
+  /* Move hero buttons slightly right on desktop only */
   .hero-buttons {
-    transform: translateX(-3px) !important;
+    transform: translateX(2px) !important;
   }
 }
 
