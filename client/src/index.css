@@ -322,6 +322,6 @@ img[loading="lazy"] {
 /* Desktop-specific hero background positioning */
 @media (min-width: 1024px) {
   .hero-desktop-position {
-    background-position: 35% 25% !important;
+    background-position: 30% 25% !important;
   }
 }
