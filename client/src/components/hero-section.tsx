@@ -45,7 +45,7 @@ export default function HeroSection() {
       {/* Arrow at bottom of screen, horizontally aligned with button center */}
       <div className="absolute bottom-6 sm:bottom-8 animate-bounce hero-arrow" style={{
         left: '50%', 
-        transform: 'translateX(-50%) translateX(-1px)'
+        transform: 'translateX(-50%)'
       }}>
         <i className="fas fa-chevron-down text-white text-xl sm:text-2xl"></i>
       </div>
