@@ -9,10 +9,9 @@ export default function HeroSection() {
   return (
     <section 
       id="home" 
-      className="hero-bg min-h-screen flex items-center justify-center text-center text-white relative"
+      className="hero-bg min-h-screen flex items-center justify-center text-center text-white relative hero-desktop-position"
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/CultureMain_1754647610299.JPG)`,
-        backgroundPosition: '65% 25%'
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/CultureMain_1754647610299.JPG)`
       }}
     >
       {/* Main Content Container - Perfectly Centered */}

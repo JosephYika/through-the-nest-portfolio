@@ -311,3 +311,10 @@ img[loading="lazy"] {
     font-size: 16px; /* Prevent zoom on iOS */
   }
 }
+
+/* Desktop-specific hero background positioning */
+@media (min-width: 1024px) {
+  .hero-desktop-position {
+    background-position: 35% 25% !important;
+  }
+}
