@@ -314,7 +314,7 @@ img[loading="lazy"] {
 /* Mobile hero background positioning - slightly right of center */
 @media (max-width: 1023px) {
   .hero-desktop-position {
-    background-position: 35% 40% !important;
+    background-position: 45% 40% !important;
   }
 }
 
