@@ -13,7 +13,7 @@ export default function HeroSection() {
   useEffect(() => {
     const updatePosition = () => {
       if (window.innerWidth >= 1024) {
-        setBackgroundPosition('20% 35%');
+        setBackgroundPosition('10% 35%');
       } else {
         setBackgroundPosition('45% 40%');
       }
