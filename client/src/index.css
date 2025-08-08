@@ -312,10 +312,10 @@ img[loading="lazy"] {
   }
 }
 
-/* Mobile hero background positioning - centered */
+/* Mobile hero background positioning - slightly right of center */
 @media (max-width: 1023px) {
   .hero-desktop-position {
-    background-position: center center !important;
+    background-position: 45% center !important;
   }
 }
 
