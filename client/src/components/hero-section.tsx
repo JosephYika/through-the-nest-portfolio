@@ -24,7 +24,7 @@ export default function HeroSection() {
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-200 font-light max-w-2xl mx-auto px-2">
             Through intimate storytelling and artistic vision, we create timeless photographs that celebrate your unique journey.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mx-auto relative">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mx-auto">
             <button 
               onClick={() => scrollToSection('portfolio')}
               className="w-full sm:w-auto bg-soft-gold hover:bg-yellow-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-center"
@@ -37,13 +37,13 @@ export default function HeroSection() {
             >
               Book Session
             </button>
-            
-            {/* Arrow centered between buttons */}
-            <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <i className="fas fa-chevron-down text-white text-xl sm:text-2xl"></i>
-            </div>
           </div>
         </div>
+      </div>
+      
+      {/* Arrow back at bottom of screen */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <i className="fas fa-chevron-down text-white text-xl sm:text-2xl"></i>
       </div>
     </section>
   );
