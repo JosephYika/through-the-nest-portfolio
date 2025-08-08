@@ -311,6 +311,13 @@ img[loading="lazy"] {
   }
 }
 
+/* Mobile hero background positioning - centered */
+@media (max-width: 1023px) {
+  .hero-bg {
+    background-position: center center !important;
+  }
+}
+
 /* Desktop-only hero background positioning - move image slightly right */
 @media (min-width: 1024px) {
   .hero-bg {
