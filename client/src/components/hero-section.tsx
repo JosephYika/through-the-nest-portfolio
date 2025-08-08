@@ -15,8 +15,11 @@ export default function HeroSection() {
         backgroundPosition: '45% 40%'
       }}
     >
+      {/* Left side elegant overlay */}
+      <div className="absolute left-0 top-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent z-10"></div>
+      
       {/* Main Content Container - Perfectly Centered */}
-      <div className="absolute inset-0 flex items-center justify-center px-4">
+      <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
         <div className="max-w-4xl mx-auto w-full fade-in">
           <h1 className="font-copernicus text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             Capturing Life's <br />
