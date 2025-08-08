@@ -1,8 +1,4 @@
-import { useState, useEffect } from 'react';
-
 export default function HeroSection() {
-  const [backgroundPosition, setBackgroundPosition] = useState('45% 40%');
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -10,26 +6,13 @@ export default function HeroSection() {
     }
   };
 
-  useEffect(() => {
-    const updatePosition = () => {
-      const isDesktop = window.innerWidth >= 1024;
-      const newPosition = isDesktop ? '5% 35%' : '45% 40%';
-      console.log('Screen width:', window.innerWidth, 'Position:', newPosition);
-      setBackgroundPosition(newPosition);
-    };
-
-    updatePosition();
-    window.addEventListener('resize', updatePosition);
-    return () => window.removeEventListener('resize', updatePosition);
-  }, []);
-
   return (
     <section 
       id="home" 
       className="hero-bg min-h-screen flex items-center justify-center text-center text-white relative"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/CultureMain_1754647610299.JPG)`,
-        backgroundPosition
+        backgroundPosition: '45% 40%'
       }}
     >
       {/* Main Content Container - Perfectly Centered */}
