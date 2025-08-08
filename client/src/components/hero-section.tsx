@@ -12,11 +12,10 @@ export default function HeroSection() {
 
   useEffect(() => {
     const updatePosition = () => {
-      if (window.innerWidth >= 1024) {
-        setBackgroundPosition('10% 35%');
-      } else {
-        setBackgroundPosition('45% 40%');
-      }
+      const isDesktop = window.innerWidth >= 1024;
+      const newPosition = isDesktop ? '5% 35%' : '45% 40%';
+      console.log('Screen width:', window.innerWidth, 'Position:', newPosition);
+      setBackgroundPosition(newPosition);
     };
 
     updatePosition();
