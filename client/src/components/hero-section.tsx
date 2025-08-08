@@ -16,7 +16,8 @@ export default function HeroSection() {
       }}
     >
       {/* Left side elegant overlay */}
-      <div className="absolute left-0 top-0 w-16 sm:w-24 lg:w-32 h-full bg-gradient-to-r from-charcoal/80 via-charcoal/40 to-transparent z-10"></div>
+      <div className="absolute left-0 top-0 w-16 sm:w-24 lg:w-32 h-full z-10" 
+           style={{background: 'linear-gradient(to right, #BBA677CC, #BBA67780, transparent)'}}></div>
       
       {/* Main Content Container - Perfectly Centered */}
       <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
