@@ -12,7 +12,7 @@ export default function HeroSection() {
       className="hero-bg min-h-screen flex items-center justify-center text-center text-white relative"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/CultureMain_1754647610299.JPG)`,
-        backgroundPosition: '55% 25%'
+        backgroundPosition: '65% 25%'
       }}
     >
       {/* Main Content Container - Perfectly Centered */}
