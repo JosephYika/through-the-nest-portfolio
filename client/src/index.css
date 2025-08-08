@@ -331,7 +331,7 @@ img[loading="lazy"] {
   
   /* Move hero buttons slightly left on desktop only */
   .hero-buttons {
-    transform: translateX(-8px) !important;
+    transform: translateX(-3px) !important;
   }
 }
 
