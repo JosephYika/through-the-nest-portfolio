@@ -314,13 +314,13 @@ img[loading="lazy"] {
 /* Mobile hero background positioning - slightly right of center */
 @media (max-width: 1023px) {
   .hero-desktop-position {
-    background-position: 45% center !important;
+    background-position: 45% 20% !important;
   }
 }
 
 /* Desktop-specific hero background positioning */
 @media (min-width: 1024px) {
   .hero-desktop-position {
-    background-position: 30% 25% !important;
+    background-position: 30% 15% !important;
   }
 }
