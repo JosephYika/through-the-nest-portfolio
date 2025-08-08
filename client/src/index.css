@@ -328,5 +328,10 @@ img[loading="lazy"] {
   .hero-arrow {
     transform: translateX(-50%) translateX(-1px) !important;
   }
+  
+  /* Move hero buttons slightly left on desktop only */
+  .hero-buttons {
+    transform: translateX(-8px) !important;
+  }
 }
 

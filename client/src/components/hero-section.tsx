@@ -25,7 +25,7 @@ export default function HeroSection() {
           <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-gray-200 font-light max-w-2xl mx-auto px-2">
             Through intimate storytelling and artistic vision, we create timeless photographs that celebrate your unique journey.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mx-auto lg:translate-x-3">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none mx-auto hero-buttons">
             <button 
               onClick={() => scrollToSection('portfolio')}
               className="w-full sm:w-auto bg-soft-gold hover:bg-yellow-600 text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-center"
