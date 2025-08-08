@@ -12,15 +12,11 @@ export default function HeroSection() {
       className="hero-bg min-h-screen flex items-center justify-center text-center text-white relative"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/CultureMain_1754647610299.JPG)`,
-        backgroundPosition: '45% 40%'
+        backgroundPosition: 'center center'
       }}
     >
-      {/* Left side solid color overlay */}
-      <div className="absolute left-0 top-0 w-16 sm:w-24 lg:w-32 h-full z-10" 
-           style={{backgroundColor: '#BBA677'}}></div>
-      
       {/* Main Content Container - Perfectly Centered */}
-      <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
+      <div className="absolute inset-0 flex items-center justify-center px-4">
         <div className="max-w-4xl mx-auto w-full fade-in">
           <h1 className="font-copernicus text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             Capturing Life's <br />
