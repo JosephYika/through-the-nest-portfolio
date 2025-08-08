@@ -167,13 +167,21 @@
 
 .masonry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .masonry-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
   .masonry-grid {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -245,4 +253,61 @@ img[loading="lazy"] {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  .hero-bg {
+    background-attachment: scroll !important; /* Fix iOS parallax issues */
+  }
+  
+  .portfolio-item img {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  /* Reduce motion for better mobile performance */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .portfolio-item,
+    .service-card {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .service-card:hover,
+  .portfolio-item:hover {
+    transform: none;
+  }
+  
+  /* Larger tap targets for mobile */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Optimize text rendering on mobile */
+@media (max-width: 640px) {
+  body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+  
+  /* Better button spacing on mobile */
+  .hero-section button,
+  .services-section button,
+  .contact-section button {
+    padding: 12px 24px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
 }

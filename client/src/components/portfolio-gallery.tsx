@@ -63,7 +63,7 @@ function LazyImage({ src, alt, className, onClick, style }: {
           onLoad={() => setIsLoaded(true)}
           loading="lazy"
           decoding="async"
-          fetchPriority={className?.includes('h-96') || className?.includes('h-[28rem]') ? 'high' : 'low'}
+
           style={style}
         />
       )}
@@ -193,26 +193,26 @@ export default function PortfolioGallery() {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-ivory dark:bg-gray-800">
+    <section id="portfolio" className="py-12 sm:py-16 lg:py-20 bg-ivory dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="font-copernicus text-4xl md:text-5xl font-bold mb-6">Portfolio</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16 fade-in">
+          <h2 className="font-copernicus text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Portfolio</h2>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2">
             Explore our diverse collection of photography spanning weddings, portraits, cultural celebrations, and lifestyle sessions.
           </p>
         </div>
         
         {/* Filter Buttons */}
-        <div className="mb-12 fade-in">
+        <div className="mb-8 sm:mb-12 fade-in">
           {/* Main Filter Row */}
-          <div className="flex flex-wrap justify-center items-center gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 sm:gap-4 mb-4">
             {/* Core Filters - Centered */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
               {coreFilters.map((filter) => (
                 <button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
                     activeFilter === filter.id
                       ? 'bg-soft-gold text-white'
                       : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
@@ -223,29 +223,29 @@ export default function PortfolioGallery() {
               ))}
             </div>
             
-            {/* View More/Less Toggle - Right Side */}
+            {/* View More/Less Toggle - Center on mobile, right on desktop */}
             <button
               onClick={() => setShowAllFilters(!showAllFilters)}
-              className="px-6 py-3 rounded-full font-medium transition-all duration-300 bg-gray-100 dark:bg-gray-600 text-charcoal dark:text-white border border-gray-200 dark:border-gray-500 hover:bg-soft-gold hover:text-white hover:border-soft-gold flex items-center gap-2 ml-4"
+              className="px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 bg-gray-100 dark:bg-gray-600 text-charcoal dark:text-white border border-gray-200 dark:border-gray-500 hover:bg-soft-gold hover:text-white hover:border-soft-gold flex items-center justify-center gap-2 text-sm sm:text-base sm:ml-4 mx-auto sm:mx-0 w-fit"
             >
               <span>{showAllFilters ? 'View Less' : 'View More'}</span>
-              <i className={`fas transition-transform duration-300 text-sm ${
+              <i className={`fas transition-transform duration-300 text-xs sm:text-sm ${
                 showAllFilters ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'
               }`}></i>
             </button>
           </div>
           
           {/* Additional Filters - Animated */}
-          <div className={`flex flex-wrap justify-center gap-4 transition-all duration-500 ease-in-out overflow-hidden ${
+          <div className={`flex flex-wrap justify-center gap-2 sm:gap-4 transition-all duration-500 ease-in-out overflow-hidden ${
             showAllFilters 
-              ? 'max-h-32 opacity-100 transform translate-y-0' 
+              ? 'max-h-24 sm:max-h-32 opacity-100 transform translate-y-0' 
               : 'max-h-0 opacity-0 transform -translate-y-4'
           }`}>
             {additionalFilters.map((filter, index) => (
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 transform text-sm sm:text-base ${
                   showAllFilters 
                     ? `translate-y-0 opacity-100 delay-[${index * 50}ms]` 
                     : 'translate-y-4 opacity-0'
@@ -282,10 +282,10 @@ export default function PortfolioGallery() {
                     src={item.image} 
                     alt={item.title}
                     className={`w-full object-cover ${
-                      item.category === 'romantic' ? 'h-96' : 
-                      item.category === 'culture' ? 'h-80' : 
-                      item.category === 'lifestyle' ? 'h-72' :
-                      item.category === 'portrait' ? 'h-[28rem]' : 'h-64'
+                      item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
+                      item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
+                      item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
+                      item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
                     }`}
                   />
                   <div className="p-6">
@@ -322,7 +322,7 @@ export default function PortfolioGallery() {
                   <LazyImage 
                     src={image.src} 
                     alt={`${image.title} - ${index + 1}`}
-                    className="w-full h-72 object-cover"
+                    className="w-full h-56 sm:h-64 lg:h-72 object-cover"
                   />
                 </div>
               </div>

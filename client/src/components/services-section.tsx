@@ -52,16 +52,16 @@ export default function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-20 bg-ivory dark:bg-gray-800">
+    <section id="services" className="py-12 sm:py-16 lg:py-20 bg-ivory dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="font-copernicus text-4xl md:text-5xl font-bold mb-6">Services & Packages</h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16 fade-in">
+          <h2 className="font-copernicus text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Services & Packages</h2>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2">
             Choose from our carefully crafted photography packages, each designed to capture your unique story with artistry and care.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service) => (
             <div 
               key={service.id}

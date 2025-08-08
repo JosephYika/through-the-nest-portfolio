@@ -2,21 +2,21 @@ import photographerPortrait from "@assets/Udee-22_1754654628221.webp";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-900">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="fade-in">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+          <div className="fade-in order-2 lg:order-1">
             <img 
               src={photographerPortrait}
               alt="Professional photographer behind Through The Nest" 
-              className="rounded-2xl shadow-2xl w-full h-auto max-w-lg mx-auto"
+              className="rounded-2xl shadow-2xl w-full h-auto max-w-sm sm:max-w-md lg:max-w-lg mx-auto"
               loading="lazy"
             />
           </div>
           
-          <div className="fade-in">
-            <h2 className="font-copernicus text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
-            <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <div className="fade-in order-1 lg:order-2 text-center lg:text-left">
+            <h2 className="font-copernicus text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Story</h2>
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               <p>
                 Through The Nest was born from a passion for capturing the authentic beauty in life's most precious moments. We believe that every photograph should tell a story, evoke emotion, and preserve memories that will be treasured for generations.
               </p>
@@ -28,15 +28,15 @@ export default function AboutSection() {
               </p>
             </div>
             
-            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-              <div className="grid grid-cols-2 gap-8 text-center">
+            <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200 dark:border-gray-700">
+              <div className="grid grid-cols-2 gap-4 sm:gap-8 text-center">
                 <div>
-                  <h3 className="font-copernicus text-3xl font-bold text-soft-gold mb-2">100+</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Sessions Captured</p>
+                  <h3 className="font-copernicus text-2xl sm:text-3xl font-bold text-soft-gold mb-1 sm:mb-2">100+</h3>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Sessions Captured</p>
                 </div>
                 <div>
-                  <h3 className="font-copernicus text-3xl font-bold text-soft-gold mb-2">5+</h3>
-                  <p className="text-gray-600 dark:text-gray-400">Years Experience</p>
+                  <h3 className="font-copernicus text-2xl sm:text-3xl font-bold text-soft-gold mb-1 sm:mb-2">5+</h3>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Years Experience</p>
                 </div>
               </div>
             </div>
