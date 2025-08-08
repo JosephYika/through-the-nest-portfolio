@@ -314,7 +314,7 @@ img[loading="lazy"] {
 /* Desktop-only hero background positioning - subtle right adjustment */
 @media (min-width: 1024px) {
   .hero-bg {
-    background-position: calc(50% + 15px) center !important;
+    background-position: calc(50% + 15px) calc(50% + 30px) !important;
   }
 }
 
