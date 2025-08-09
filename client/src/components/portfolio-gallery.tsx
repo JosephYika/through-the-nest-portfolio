@@ -1,15 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
-
-// Import new webp wedding images
-import weddingImage1 from "@assets/BLVD9348_1754654186488.webp";
-import weddingImage2 from "@assets/BLVD9340_1754654186489.webp";
-import weddingImage3 from "@assets/BLVD9307_1754654186489.webp";
-import weddingImage4 from "@assets/BLVD9264-1_1754654186490.webp";
-import weddingImage5 from "@assets/BLVD9204_1754654186491.webp";
-import weddingImage6 from "@assets/BLVD9185_1754654186491.webp";
-import weddingImage7 from "@assets/BLVD9182_1754654186492.webp";
-import weddingImage8 from "@assets/BLVD9180_1754654186492.webp";
-import weddingImage9 from "@assets/BLVD9174_1754654186493.webp";
+import OptimizedLazyImage from "./OptimizedLazyImage";
+import VirtualizedWeddingGallery from "./VirtualizedWeddingGallery";
+import { getWeddingThumbnail, getWeddingImages } from "@/lib/image-optimization";
 
 // Lazy loading image component with intersection observer
 function LazyImage({ src, alt, className, onClick, style }: {
@@ -75,21 +67,16 @@ export default function PortfolioGallery() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [showAllFilters, setShowAllFilters] = useState(false);
 
+  const weddingThumbnail = getWeddingThumbnail();
+  const weddingImages = getWeddingImages();
+
   const portfolioItems = [
     {
       id: 1,
-      image: weddingImage6, // BLVD9185 - Beautiful historic venue shot
-      images: [
-        weddingImage1,
-        weddingImage2,
-        weddingImage3,
-        weddingImage4,
-        weddingImage5,
-        weddingImage6,
-        weddingImage7,
-        weddingImage8,
-        weddingImage9
-      ],
+      image: weddingThumbnail.src, // Use src for consistency
+      responsiveImage: weddingThumbnail, // Store full responsive image
+      images: weddingImages.map(img => img.src), // Convert to src strings for lightbox
+      responsiveImages: weddingImages, // Store full responsive images
       title: "Historic Venue Romance",
       category: "wedding",
       description: "Wedding Photography"
@@ -183,7 +170,7 @@ export default function PortfolioGallery() {
   const openLightbox = (portfolioItem: any) => {
     const event = new CustomEvent('openLightbox', { 
       detail: { 
-        images: portfolioItem.images,
+        images: portfolioItem.images, // Now all are string arrays
         title: portfolioItem.title,
         description: portfolioItem.description,
         currentIndex: 0
@@ -278,16 +265,24 @@ export default function PortfolioGallery() {
                   className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
                   onClick={() => openLightbox(item)}
                 >
-                  <LazyImage 
-                    src={item.image} 
-                    alt={item.title}
-                    className={`w-full object-cover ${
-                      item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
-                      item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
-                      item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
-                      item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
-                    }`}
-                  />
+                  {item.category === 'wedding' && item.responsiveImage ? (
+                    <OptimizedLazyImage 
+                      image={item.responsiveImage}
+                      className={`w-full h-52 sm:h-60 lg:h-64 object-cover`}
+                      priority={true}
+                    />
+                  ) : (
+                    <LazyImage 
+                      src={item.image} 
+                      alt={item.title}
+                      className={`w-full object-cover ${
+                        item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
+                        item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
+                        item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
+                        item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
+                      }`}
+                    />
+                  )}
                   <div className="p-6">
                     <h3 className="font-copernicus text-xl font-bold mb-2">{item.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
@@ -295,8 +290,23 @@ export default function PortfolioGallery() {
                 </div>
               </div>
             ))
+          ) : activeFilter === 'wedding' ? (
+            // Special virtualized view for wedding category
+            <VirtualizedWeddingGallery 
+              onImageClick={(images, currentIndex, title, description) => {
+                const event = new CustomEvent('openLightbox', { 
+                  detail: { 
+                    images: images.map(img => img.src),
+                    title,
+                    description,
+                    currentIndex
+                  } 
+                });
+                window.dispatchEvent(event);
+              }}
+            />
           ) : (
-            // Show all images for specific category
+            // Show all images for other specific categories
             filteredImages.map((image, index) => (
               <div
                 key={`${image.category}-${index}`}

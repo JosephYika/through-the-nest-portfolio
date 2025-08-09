@@ -15,6 +15,15 @@
 - ✓ Image cleanup: Removed all unused PNG/JPG files, kept only webp images in use and essential public images
 - ✓ File structure optimized: Reduced UI components from 40+ to 10 essential files
 
+## Wedding Image Performance Optimization (August 9, 2025)
+- ✓ Replaced static image imports with dynamic paths for wedding category
+- ✓ Implemented LQIP (Low Quality Image Placeholders) with blur effects  
+- ✓ Added responsive images with srcset and sizes for mobile optimization
+- ✓ Created virtualized wedding gallery with incremental loading (3 initial, 2 more on scroll)
+- ✓ Enhanced Intersection Observer lazy loading with 100px margin
+- ✓ Optimized loading animations and error handling
+- ✓ Maintained all existing functionality (lightbox, animations, hover effects)
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.

@@ -186,7 +186,34 @@
 }
 
 .portfolio-item {
-  /* Removed conflicting hover styles - handled by component */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Enhanced loading spinner */
+.loading-spinner {
+  border-top-color: hsl(38, 42%, 62%);
+  animation: spin 1s linear infinite;
+}
+
+/* Optimized image loading animations */
+.fade-in-image {
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-image.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* LQIP blur animation */
+.lqip-blur {
+  filter: blur(8px) brightness(1.1);
+  transform: scale(1.1);
+  transition: opacity 0.3s ease-out;
 }
 
 .hero-bg {
