@@ -27,32 +27,34 @@ export const generateLQIP = (color: string = '#f3f3f3'): string => {
   return canvas.toDataURL('image/jpeg', 0.1);
 };
 
-// Generate responsive image object
+// Generate responsive image object using optimized images
 export const createResponsiveImage = (
   basePath: string,
   alt: string,
   lqipColor: string = '#f5f5f5'
 ): ResponsiveImage => {
-  const baseUrl = basePath;
+  // Extract filename from path for optimized versions
+  const filename = basePath.split('/').pop()?.replace('.webp', '') || '';
+  const optimizedPath = '/images/wedding/optimized';
   
   return {
-    src: baseUrl,
+    src: `${optimizedPath}/${filename}_large.webp`, // Default to large for quality
     srcSet: `
-      ${baseUrl}?w=400 400w,
-      ${baseUrl}?w=800 800w,
-      ${baseUrl}?w=1200 1200w,
-      ${baseUrl}?w=1600 1600w
-    `,
+      ${optimizedPath}/${filename}_thumb.webp 400w,
+      ${optimizedPath}/${filename}_medium.webp 800w,
+      ${optimizedPath}/${filename}_large.webp 1600w,
+      ${optimizedPath}/${filename}.webp 2000w
+    `.replace(/\s+/g, ' ').trim(),
     sizes: `
       (max-width: 640px) 400px,
       (max-width: 1024px) 800px,
-      (max-width: 1280px) 1200px,
-      1600px
-    `,
+      (max-width: 1280px) 1600px,
+      2000px
+    `.replace(/\s+/g, ' ').trim(),
     lqip: generateLQIP(lqipColor),
     alt,
-    width: 1200,
-    height: 800
+    width: 1600,
+    height: 1067
   };
 };
 
