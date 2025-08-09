@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import OptimizedLazyImage from "./OptimizedLazyImage";
 import { getWeddingImages, ResponsiveImage } from "@/lib/image-optimization";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface VirtualizedWeddingGalleryProps {
   onImageClick: (images: ResponsiveImage[], currentIndex: number, title: string, description: string) => void;
@@ -12,6 +13,10 @@ export default function VirtualizedWeddingGallery({ onImageClick }: VirtualizedW
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const allImages = getWeddingImages();
+  const { ref: containerRef, isVisible } = useScrollAnimation({ 
+    threshold: 0.05, 
+    rootMargin: '100px 0px -100px 0px' 
+  });
   
   // Load initial images
   useEffect(() => {
@@ -55,17 +60,18 @@ export default function VirtualizedWeddingGallery({ onImageClick }: VirtualizedW
   };
 
   return (
-    <div className="space-y-4">
+    <div ref={containerRef} className="space-y-4">
       {/* Images Grid */}
       <div className="masonry-grid">
         {visibleImages.map((image, index) => (
           <div
             key={`wedding-virtualized-${index}`}
-            className="portfolio-item"
+            className={`portfolio-item portfolio-fade-up ${isVisible ? 'animate' : ''}`}
             data-category="wedding"
+            style={{ transitionDelay: `${index * 0.1}s` }}
           >
             <div 
-              className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer group"
+              className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer group relative"
               onClick={() => handleImageClick(index)}
             >
               <OptimizedLazyImage 

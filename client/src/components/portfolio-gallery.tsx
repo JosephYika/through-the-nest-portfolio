@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef } from "react";
 import OptimizedLazyImage from "./OptimizedLazyImage";
 import VirtualizedWeddingGallery from "./VirtualizedWeddingGallery";
 import { getWeddingThumbnail, getWeddingImages } from "@/lib/image-optimization";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Lazy loading image component with intersection observer
 function LazyImage({ src, alt, className, onClick, style }: {
@@ -252,94 +253,120 @@ export default function PortfolioGallery() {
         </div>
         
         {/* Portfolio Grid */}
-        <div className="masonry-grid fade-in" id="portfolio-grid">
-          {activeFilter === 'all' ? (
-            // Show cards for "All Work" view
-            portfolioItems.map((item) => (
-              <div
-                key={item.id}
-                className="portfolio-item"
-                data-category={item.category}
-              >
-                <div 
-                  className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
-                  onClick={() => openLightbox(item)}
-                >
-                  {item.category === 'wedding' && item.responsiveImage ? (
-                    <OptimizedLazyImage 
-                      image={item.responsiveImage}
-                      className={`w-full h-52 sm:h-60 lg:h-64 object-cover`}
-                      priority={true}
-                    />
-                  ) : (
-                    <LazyImage 
-                      src={item.image} 
-                      alt={item.title}
-                      className={`w-full object-cover ${
-                        item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
-                        item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
-                        item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
-                        item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
-                      }`}
-                    />
-                  )}
-                  <div className="p-6">
-                    <h3 className="font-copernicus text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : activeFilter === 'wedding' ? (
-            // Special virtualized view for wedding category
-            <VirtualizedWeddingGallery 
-              onImageClick={(images, currentIndex, title, description) => {
-                const event = new CustomEvent('openLightbox', { 
-                  detail: { 
-                    images: images.map(img => img.src),
-                    title,
-                    description,
-                    currentIndex
-                  } 
-                });
-                window.dispatchEvent(event);
-              }}
-            />
-          ) : (
-            // Show all images for other specific categories
-            filteredImages.map((image, index) => (
-              <div
-                key={`${image.category}-${index}`}
-                className="portfolio-item"
-                data-category={image.category}
-              >
-                <div 
-                  className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
-                  onClick={() => {
-                    const categoryItems = portfolioItems.filter(item => item.category === activeFilter);
-                    const allImages = categoryItems.flatMap(item => item.images);
-                    const event = new CustomEvent('openLightbox', { 
-                      detail: { 
-                        images: allImages,
-                        title: image.title,
-                        description: image.description,
-                        currentIndex: index
-                      } 
-                    });
-                    window.dispatchEvent(event);
-                  }}
-                >
-                  <LazyImage 
-                    src={image.src} 
-                    alt={`${image.title} - ${index + 1}`}
-                    className="w-full h-56 sm:h-64 lg:h-72 object-cover"
-                  />
-                </div>
-              </div>
-            ))
-          )}
-        </div>
+        <PortfolioGrid activeFilter={activeFilter} portfolioItems={portfolioItems} openLightbox={openLightbox} filteredImages={filteredImages} />
       </div>
     </section>
+  );
+}
+
+// Separate component for portfolio grid with animations
+function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredImages }: any) {
+  const { ref: gridRef, isVisible } = useScrollAnimation({ 
+    threshold: 0.05, 
+    rootMargin: '100px 0px -100px 0px' 
+  });
+
+  return (
+    <div ref={gridRef} className="masonry-grid fade-in" id="portfolio-grid">
+      {activeFilter === 'all' ? (
+        // Show cards for "All Work" view
+        portfolioItems.map((item: any, index: number) => (
+          <PortfolioCard
+            key={item.id}
+            item={item}
+            index={index}
+            isVisible={isVisible}
+            onClick={() => openLightbox(item)}
+          />
+        ))
+      ) : activeFilter === 'wedding' ? (
+        // Special virtualized view for wedding category
+        <VirtualizedWeddingGallery 
+          onImageClick={(images, currentIndex, title, description) => {
+            const event = new CustomEvent('openLightbox', { 
+              detail: { 
+                images: images.map(img => img.src),
+                title,
+                description,
+                currentIndex
+              } 
+            });
+            window.dispatchEvent(event);
+          }}
+        />
+      ) : (
+        // Show all images for other specific categories
+        filteredImages.map((image: any, index: number) => (
+          <PortfolioCard
+            key={`${image.category}-${index}`}
+            item={{
+              id: `${image.category}-${index}`,
+              image: image.src,
+              title: image.title,
+              category: image.category,
+              description: image.description
+            }}
+            index={index}
+            isVisible={isVisible}
+            isImageView={true}
+            onClick={() => {
+              const categoryItems = portfolioItems.filter((item: any) => item.category === activeFilter);
+              const allImages = categoryItems.flatMap((item: any) => item.images);
+              const event = new CustomEvent('openLightbox', { 
+                detail: { 
+                  images: allImages,
+                  title: image.title,
+                  description: image.description,
+                  currentIndex: index
+                } 
+              });
+              window.dispatchEvent(event);
+            }}
+          />
+        ))
+      )}
+    </div>
+  );
+}
+
+// Individual portfolio card component with animation
+function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }: any) {
+  return (
+    <div
+      className={`portfolio-item portfolio-fade-up ${isVisible ? 'animate' : ''}`}
+      data-category={item.category}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      <div 
+        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+        onClick={onClick}
+      >
+        {item.category === 'wedding' && item.responsiveImage ? (
+          <OptimizedLazyImage 
+            image={item.responsiveImage}
+            className={`w-full h-52 sm:h-60 lg:h-64 object-cover`}
+            priority={true}
+          />
+        ) : (
+          <LazyImage 
+            src={item.image} 
+            alt={item.title}
+            className={`w-full object-cover ${
+              isImageView ? 'h-56 sm:h-64 lg:h-72' :
+              item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
+              item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
+              item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
+              item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
+            }`}
+          />
+        )}
+        {!isImageView && (
+          <div className="p-6">
+            <h3 className="font-copernicus text-xl font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
