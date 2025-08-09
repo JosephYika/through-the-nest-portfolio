@@ -323,15 +323,5 @@ img[loading="lazy"] {
   .hero-bg {
     background-position: 55% center !important;
   }
-  
-  /* Move arrow 1 pixel left on desktop only */
-  .hero-arrow {
-    transform: translateX(-50%) translateX(-1px) !important;
-  }
-  
-  /* Move hero buttons slightly right on desktop only */
-  .hero-buttons {
-    transform: translateX(2px) !important;
-  }
 }
 
