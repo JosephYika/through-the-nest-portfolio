@@ -374,22 +374,6 @@ function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredIma
           onClick={() => openLightbox(item)}
         />
       ));
-    } else if (activeFilter === 'wedding') {
-      return (
-        <VirtualizedWeddingGallery 
-          onImageClick={(images, currentIndex, title, description) => {
-            const event = new CustomEvent('openLightbox', { 
-              detail: { 
-                images: images.map(img => img.src),
-                title,
-                description,
-                currentIndex
-              } 
-            });
-            window.dispatchEvent(event);
-          }}
-        />
-      );
     } else {
       return filteredImages.map((image: any, index: number) => (
         <PortfolioCard
@@ -423,7 +407,7 @@ function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredIma
   }, [activeFilter, portfolioItems, filteredImages, isVisible, openLightbox]);
 
   // Choose grid class based on filter
-  const gridClass = activeFilter === 'all' ? 'masonry-grid' : 'category-grid';
+  const gridClass = activeFilter === 'all' ? 'masonry-grid' : activeFilter === 'wedding' ? 'wedding-grid' : 'category-grid';
   
   return (
     <div ref={gridRef} className={`${gridClass} fade-in`} id="portfolio-grid">

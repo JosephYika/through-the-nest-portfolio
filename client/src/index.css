@@ -244,6 +244,13 @@
   }
 }
 
+@media (min-width: 768px) {
+  .wedding-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 .portfolio-item {
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   contain: layout style paint;
