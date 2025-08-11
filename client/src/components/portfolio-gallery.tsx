@@ -4,19 +4,19 @@ import VirtualizedWeddingGallery from "./VirtualizedWeddingGallery";
 import { getWeddingThumbnail, getWeddingImages } from "@/lib/image-optimization";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-// Lazy loading image component with intersection observer
-function LazyImage({ src, alt, className, onClick, style }: {
+// Optimized lazy loading image component with intersection observer
+const LazyImage = React.memo(({ src, alt, className, onClick, style }: {
   src: string;
   alt: string;
   className?: string;
   onClick?: () => void;
   style?: React.CSSProperties;
-}) {
+}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // Intersection Observer for lazy loading
+  // Memoize observer callback
   const observerCallback = useCallback((entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -27,23 +27,32 @@ function LazyImage({ src, alt, className, onClick, style }: {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '50px', // Load images 50px before they come into view
-      threshold: 0.1
+      rootMargin: '100px', // Increased margin for smoother loading
+      threshold: 0.01, // Lower threshold for earlier loading
     });
 
     if (imgRef.current) {
       observer.observe(imgRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
   }, [observerCallback]);
+
+  // Memoize load handler
+  const handleLoad = useCallback(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <div ref={imgRef} className={`relative lazy-image-container ${className}`} onClick={onClick} style={style}>
-      {/* Loading placeholder with optimized spinner */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-gray-300 border-t-soft-gold rounded-full loading-spinner"></div>
+      {/* Simplified loading placeholder */}
+      {!isLoaded && isInView && (
+        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-lg">
+          <div className="w-6 h-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 border-gray-300 border-t-soft-gold rounded-full loading-spinner"></div>
         </div>
       )}
       
@@ -52,17 +61,16 @@ function LazyImage({ src, alt, className, onClick, style }: {
         <img
           src={src}
           alt={alt}
-          className={`${className} transition-opacity duration-300 fade-in-image ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoad={() => setIsLoaded(true)}
+          className={`${className} transition-opacity duration-200 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={handleLoad}
           loading="lazy"
           decoding="async"
-
           style={style}
         />
       )}
     </div>
   );
-}
+});
 
 export default function PortfolioGallery() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -334,28 +342,28 @@ export default function PortfolioGallery() {
   );
 }
 
-// Separate component for portfolio grid with animations
+// Separate component for portfolio grid with animations - optimized
 function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredImages }: any) {
   const { ref: gridRef, isVisible } = useScrollAnimation({ 
-    threshold: 0.05, 
-    rootMargin: '100px 0px -100px 0px' 
+    threshold: 0.1, // Slightly higher threshold for better performance
+    rootMargin: '50px 0px -50px 0px', // Reduced margin to prevent premature loading
+    triggerOnce: true // Prevent repeated animations
   });
 
-  return (
-    <div ref={gridRef} className="masonry-grid fade-in" id="portfolio-grid">
-      {activeFilter === 'all' ? (
-        // Show cards for "All Work" view
-        portfolioItems.map((item: any, index: number) => (
-          <PortfolioCard
-            key={item.id}
-            item={item}
-            index={index}
-            isVisible={isVisible}
-            onClick={() => openLightbox(item)}
-          />
-        ))
-      ) : activeFilter === 'wedding' ? (
-        // Special virtualized view for wedding category
+  // Memoize filtered content to prevent unnecessary re-renders
+  const gridContent = React.useMemo(() => {
+    if (activeFilter === 'all') {
+      return portfolioItems.map((item: any, index: number) => (
+        <PortfolioCard
+          key={item.id}
+          item={item}
+          index={index}
+          isVisible={isVisible}
+          onClick={() => openLightbox(item)}
+        />
+      ));
+    } else if (activeFilter === 'wedding') {
+      return (
         <VirtualizedWeddingGallery 
           onImageClick={(images, currentIndex, title, description) => {
             const event = new CustomEvent('openLightbox', { 
@@ -369,70 +377,86 @@ function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredIma
             window.dispatchEvent(event);
           }}
         />
-      ) : (
-        // Show all images for other specific categories
-        filteredImages.map((image: any, index: number) => (
-          <PortfolioCard
-            key={`${image.category}-${index}`}
-            item={{
-              id: `${image.category}-${index}`,
-              image: image.src,
-              title: image.title,
-              category: image.category,
-              description: image.description
-            }}
-            index={index}
-            isVisible={isVisible}
-            isImageView={true}
-            onClick={() => {
-              const categoryItems = portfolioItems.filter((item: any) => item.category === activeFilter);
-              const allImages = categoryItems.flatMap((item: any) => item.images);
-              const event = new CustomEvent('openLightbox', { 
-                detail: { 
-                  images: allImages,
-                  title: image.title,
-                  description: image.description,
-                  currentIndex: index
-                } 
-              });
-              window.dispatchEvent(event);
-            }}
-          />
-        ))
-      )}
+      );
+    } else {
+      return filteredImages.map((image: any, index: number) => (
+        <PortfolioCard
+          key={`${image.category}-${index}`}
+          item={{
+            id: `${image.category}-${index}`,
+            image: image.src,
+            title: image.title,
+            category: image.category,
+            description: image.description
+          }}
+          index={index}
+          isVisible={isVisible}
+          isImageView={true}
+          onClick={() => {
+            const categoryItems = portfolioItems.filter((item: any) => item.category === activeFilter);
+            const allImages = categoryItems.flatMap((item: any) => item.images);
+            const event = new CustomEvent('openLightbox', { 
+              detail: { 
+                images: allImages,
+                title: image.title,
+                description: image.description,
+                currentIndex: index
+              } 
+            });
+            window.dispatchEvent(event);
+          }}
+        />
+      ));
+    }
+  }, [activeFilter, portfolioItems, filteredImages, isVisible, openLightbox]);
+
+  return (
+    <div ref={gridRef} className="masonry-grid fade-in" id="portfolio-grid">
+      {gridContent}
     </div>
   );
 }
 
-// Individual portfolio card component with animation
+// Individual portfolio card component with animation - optimized for performance
 function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }: any) {
+  // Memoize style calculations to prevent re-renders
+  const cardStyle = React.useMemo(() => ({
+    transitionDelay: `${Math.min(index * 0.1, 0.5)}s` // Cap delay at 0.5s to prevent long delays
+  }), [index]);
+
+  // Optimize height classes calculation
+  const imageHeightClass = React.useMemo(() => {
+    if (isImageView) return 'h-56 sm:h-64 lg:h-72';
+    switch (item.category) {
+      case 'romantic': return 'h-64 sm:h-80 lg:h-96';
+      case 'culture': return 'h-60 sm:h-72 lg:h-80';
+      case 'lifestyle': return 'h-56 sm:h-64 lg:h-72';
+      case 'portrait': return 'h-72 sm:h-80 lg:h-[28rem]';
+      default: return 'h-52 sm:h-60 lg:h-64';
+    }
+  }, [item.category, isImageView]);
+
   return (
     <div
       className={`portfolio-item portfolio-fade-up ${isVisible ? 'animate' : ''}`}
       data-category={item.category}
-      style={{ transitionDelay: `${index * 0.1}s` }}
+      style={cardStyle}
     >
       <div 
-        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-all duration-500 cursor-pointer"
+        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
         onClick={onClick}
       >
         {item.category === 'wedding' && item.responsiveImage ? (
           <OptimizedLazyImage 
             image={item.responsiveImage}
             className={`w-full h-52 sm:h-60 lg:h-64 object-cover`}
-            priority={true}
+            priority={index === 0} // Only prioritize first item
           />
         ) : (
           <LazyImage 
             src={item.image} 
             alt={item.title}
-            className={`w-full object-cover ${
-              isImageView ? 'h-56 sm:h-64 lg:h-72' :
-              item.category === 'romantic' ? 'h-64 sm:h-80 lg:h-96' : 
-              item.category === 'culture' ? 'h-60 sm:h-72 lg:h-80' : 
-              item.category === 'lifestyle' ? 'h-56 sm:h-64 lg:h-72' :
-              item.category === 'portrait' ? 'h-72 sm:h-80 lg:h-[28rem]' : 'h-52 sm:h-60 lg:h-64'
-            }`}
+            className={`w-full object-cover ${imageHeightClass}`}
           />
         )}
         {!isImageView && (
