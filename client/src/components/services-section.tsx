@@ -72,10 +72,10 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div 
               key={service.id}
-              className={`service-card-entrance ${isVisible ? 'animate' : ''} bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-[1.02] ${
+              className={`service-card-entrance ${isVisible ? 'animate' : ''} bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group ${
                 service.isPopular ? 'border-2 border-soft-gold relative' : ''
               }`}
-              style={{ transitionDelay: `${index * 0.3}s` }}
+              style={{ transitionDelay: `${index * 0.2}s` }}
             >
               {service.isPopular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-soft-gold text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -84,7 +84,7 @@ export default function ServicesSection() {
               )}
               
               <div className="text-center mb-6">
-                <div className={`service-icon ${isVisible ? 'animate' : ''} w-16 h-16 bg-soft-gold rounded-full flex items-center justify-center mx-auto mb-4`} style={{ transitionDelay: `${index * 0.3 + 0.3}s` }}>
+                <div className={`service-icon ${isVisible ? 'animate' : ''} w-16 h-16 bg-soft-gold rounded-full flex items-center justify-center mx-auto mb-4`} style={{ transitionDelay: `${index * 0.2 + 0.2}s` }}>
                   <i className={`${service.icon} text-white text-2xl`}></i>
                 </div>
                 <h3 className="font-copernicus text-2xl font-bold mb-2">{service.title}</h3>
@@ -96,7 +96,7 @@ export default function ServicesSection() {
                   <div 
                     key={featureIndex} 
                     className={`service-feature ${isVisible ? 'animate' : ''} flex items-center text-gray-600 dark:text-gray-300`}
-                    style={{ transitionDelay: `${index * 0.3 + 0.5 + featureIndex * 0.1}s` }}
+                    style={{ transitionDelay: `${index * 0.2 + 0.3 + featureIndex * 0.05}s` }}
                   >
                     <i className="fas fa-check text-soft-gold mr-3"></i>
                     <span>{feature}</span>
@@ -104,11 +104,11 @@ export default function ServicesSection() {
                 ))}
               </div>
               
-              <div className={`service-cta ${isVisible ? 'animate' : ''} text-center border-t border-gray-200 dark:border-gray-600 pt-6`} style={{ transitionDelay: `${index * 0.3 + 0.9}s` }}>
+              <div className={`service-cta ${isVisible ? 'animate' : ''} text-center border-t border-gray-200 dark:border-gray-600 pt-6`} style={{ transitionDelay: `${index * 0.2 + 0.5}s` }}>
                 <p className="font-copernicus text-3xl font-bold text-soft-gold mb-4">{service.price}</p>
                 <button 
                   onClick={scrollToContact}
-                  className="w-full bg-soft-gold hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
+                  className="w-full bg-soft-gold hover:bg-yellow-600 hover:scale-105 text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
                 >
                   Book Session
                 </button>
