@@ -122,16 +122,25 @@ export default function PortfolioGallery() {
     }
   ];
 
-  // Core categories always visible
-  const coreFilters = [
+  // Mobile filters (only essential categories)
+  const mobileFilters = [
+    { id: 'all', label: 'All Work' },
+    { id: 'wedding', label: 'Weddings' },
+    { id: 'portrait', label: 'Portraits' }
+  ];
+
+  // Desktop core categories
+  const desktopCoreFilters = [
     { id: 'all', label: 'All Work' },
     { id: 'wedding', label: 'Weddings' },
     { id: 'portrait', label: 'Portraits' },
     { id: 'lifestyle', label: 'Lifestyle' }
   ];
 
-  // Additional categories shown on "View More"
+  // Additional categories shown on "View More" (desktop only)
   const additionalFilters = [
+    { id: 'culture', label: 'Culture' },
+    { id: 'romantic', label: 'Romantic' },
     { id: 'birthday', label: 'Birthdays' },
     { id: 'party', label: 'Party' },
     { id: 'corporate', label: 'Corporate' },
@@ -139,8 +148,11 @@ export default function PortfolioGallery() {
     { id: 'sports', label: 'Sports' }
   ];
 
-  const allFilters = [...coreFilters, ...additionalFilters];
-  const visibleFilters = showAllFilters ? allFilters : coreFilters;
+  const allDesktopFilters = [...desktopCoreFilters, ...additionalFilters];
+  
+  // Use mobile filters on small screens, desktop filters on larger screens
+  const getMobileVisibleFilters = () => mobileFilters;
+  const getDesktopVisibleFilters = () => showAllFilters ? allDesktopFilters : desktopCoreFilters;
 
   // Get all images for the selected category
   const getFilteredImages = () => {
@@ -192,15 +204,14 @@ export default function PortfolioGallery() {
         
         {/* Filter Buttons */}
         <div className="mb-8 sm:mb-12 fade-in">
-          {/* Main Filter Row */}
-          <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 sm:gap-4 mb-4">
-            {/* Core Filters - Centered */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-              {coreFilters.map((filter) => (
+          {/* Mobile Filter Row - Only 3 essential categories */}
+          <div className="block sm:hidden">
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              {getMobileVisibleFilters().map((filter) => (
                 <button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
+                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
                     activeFilter === filter.id
                       ? 'bg-soft-gold text-white'
                       : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
@@ -210,21 +221,43 @@ export default function PortfolioGallery() {
                 </button>
               ))}
             </div>
-            
-            {/* View More/Less Toggle - Center on mobile, right on desktop */}
-            <button
-              onClick={() => setShowAllFilters(!showAllFilters)}
-              className="px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 bg-gray-100 dark:bg-gray-600 text-charcoal dark:text-white border border-gray-200 dark:border-gray-500 hover:bg-soft-gold hover:text-white hover:border-soft-gold flex items-center justify-center gap-2 text-sm sm:text-base sm:ml-4 mx-auto sm:mx-0 w-fit"
-            >
-              <span>{showAllFilters ? 'View Less' : 'View More'}</span>
-              <i className={`fas transition-transform duration-300 text-xs sm:text-sm ${
-                showAllFilters ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'
-              }`}></i>
-            </button>
+          </div>
+
+          {/* Desktop Filter Row - Full functionality */}
+          <div className="hidden sm:block">
+            <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 sm:gap-4 mb-4">
+              {/* Core Filters - Centered */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+                {getDesktopVisibleFilters().slice(0, 4).map((filter) => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setActiveFilter(filter.id)}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${
+                      activeFilter === filter.id
+                        ? 'bg-soft-gold text-white'
+                        : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+              
+              {/* View More/Less Toggle - Desktop only */}
+              <button
+                onClick={() => setShowAllFilters(!showAllFilters)}
+                className="px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 bg-gray-100 dark:bg-gray-600 text-charcoal dark:text-white border border-gray-200 dark:border-gray-500 hover:bg-soft-gold hover:text-white hover:border-soft-gold flex items-center justify-center gap-2 text-sm sm:text-base sm:ml-4 mx-auto sm:mx-0 w-fit"
+              >
+                <span>{showAllFilters ? 'View Less' : 'View More'}</span>
+                <i className={`fas transition-transform duration-300 text-xs sm:text-sm ${
+                  showAllFilters ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'
+                }`}></i>
+              </button>
+            </div>
           </div>
           
-          {/* Additional Filters - Animated */}
-          <div className={`flex flex-wrap justify-center gap-2 sm:gap-4 transition-all duration-500 ease-in-out overflow-hidden ${
+          {/* Additional Filters - Desktop Only - Animated */}
+          <div className={`hidden sm:flex flex-wrap justify-center gap-2 sm:gap-4 transition-all duration-500 ease-in-out overflow-hidden ${
             showAllFilters 
               ? 'max-h-24 sm:max-h-32 opacity-100 transform translate-y-0' 
               : 'max-h-0 opacity-0 transform -translate-y-4'
