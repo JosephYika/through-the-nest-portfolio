@@ -187,6 +187,102 @@ export default function PortfolioGallery() {
       title: "Academic Headshots",
       category: "corporate",
       description: "Corporate Photography"
+    },
+    {
+      id: 13,
+      image: "/IMG_1436_1754916458211_medium.webp",
+      images: ["/IMG_1436_1754916458211_large.webp"],
+      title: "Traditional Heritage",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 14,
+      image: "/IMG_1442_1754916458213_medium.webp",
+      images: ["/IMG_1442_1754916458213_large.webp"],
+      title: "Cultural Traditions",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 15,
+      image: "/IMG_3687_1754916458214_medium.webp",
+      images: ["/IMG_3687_1754916458214_large.webp"],
+      title: "Elegant Heritage",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 16,
+      image: "/IMG_4385_1754916467536_medium.webp",
+      images: ["/IMG_4385_1754916467536_large.webp"],
+      title: "Modern Elegance",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 17,
+      image: "/IMG_3688_1754916467537_medium.webp",
+      images: ["/IMG_3688_1754916467537_large.webp"],
+      title: "Cultural Beauty",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 18,
+      image: "/IMG_4384_1754916467538_medium.webp",
+      images: ["/IMG_4384_1754916467538_large.webp"],
+      title: "Joyful Heritage",
+      category: "culture",
+      description: "Cultural Heritage Photography"
+    },
+    {
+      id: 19,
+      image: "/IMG_1436_1754916458211_medium.webp",
+      images: ["/IMG_1436_1754916458211_large.webp"],
+      title: "Cultural Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
+    },
+    {
+      id: 20,
+      image: "/IMG_1442_1754916458213_medium.webp",
+      images: ["/IMG_1442_1754916458213_large.webp"],
+      title: "Heritage Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
+    },
+    {
+      id: 21,
+      image: "/IMG_3687_1754916458214_medium.webp",
+      images: ["/IMG_3687_1754916458214_large.webp"],
+      title: "Traditional Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
+    },
+    {
+      id: 22,
+      image: "/IMG_4385_1754916467536_medium.webp",
+      images: ["/IMG_4385_1754916467536_large.webp"],
+      title: "Contemporary Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
+    },
+    {
+      id: 23,
+      image: "/IMG_3688_1754916467537_medium.webp",
+      images: ["/IMG_3688_1754916467537_large.webp"],
+      title: "Graceful Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
+    },
+    {
+      id: 24,
+      image: "/IMG_4384_1754916467538_medium.webp",
+      images: ["/IMG_4384_1754916467538_large.webp"],
+      title: "Radiant Portrait",
+      category: "portrait",
+      description: "Portrait Photography"
     }
   ];
 

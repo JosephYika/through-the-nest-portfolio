@@ -92,6 +92,15 @@
 - ✓ Professional headshots: Executive portraits with clean tropical leaf background
 - ✓ Student portraits: Academic headshots with clean grey backgrounds
 - ✓ Corporate category displays 3 images per row on desktop with proper grid layout
+- ✓ Enhanced corporate image sizing: increased height to 288px→320px→384px and object-top positioning for better face visibility
+
+## Cultural Heritage Portfolio Addition (August 11, 2025)
+- ✓ Added 6 cultural heritage images showcasing traditional African attire and henna art
+- ✓ Dual category integration: Added same images to both Culture and Portrait categories
+- ✓ Traditional portraits: Vibrant headwraps, cultural dress, and heritage styling
+- ✓ Artistic diversity: Mix of color and black & white portraits with cultural elements
+- ✓ Image optimization: All images compressed with sharp-cli (12-80KB range)
+- ✓ Portfolio expansion: Culture category now has 6 images, Portrait category has 6 cultural portraits
 
 # User Preferences
 
