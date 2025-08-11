@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import OptimizedLazyImage from "./OptimizedLazyImage";
 import VirtualizedWeddingGallery from "./VirtualizedWeddingGallery";
-import { getWeddingThumbnail, getWeddingImages } from "@/lib/image-optimization";
+import { getWeddingThumbnail, getWeddingImages, getRomanticImage } from "@/lib/image-optimization";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Optimized lazy loading image component with intersection observer
@@ -78,6 +78,7 @@ export default function PortfolioGallery() {
 
   const weddingThumbnail = getWeddingThumbnail();
   const weddingImages = getWeddingImages();
+  const romanticImage = getRomanticImage();
 
   const portfolioItems = [
     {
@@ -122,8 +123,9 @@ export default function PortfolioGallery() {
     },
     {
       id: 5,
-      image: "/images/RomanticMain_1754647610300.jpg",
-      images: ["/images/RomanticMain_1754647610300.jpg"],
+      image: "/images/featured/romantic-main-medium.webp", // Fallback
+      responsiveImage: romanticImage, // Use optimized responsive image
+      images: ["/images/featured/romantic-main-large.webp"],
       title: "Love Stories",
       category: "romantic",
       description: "Romantic Photography"
@@ -446,10 +448,10 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
         className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
         onClick={onClick}
       >
-        {item.category === 'wedding' && item.responsiveImage ? (
+        {(item.category === 'wedding' || item.category === 'romantic') && item.responsiveImage ? (
           <OptimizedLazyImage 
             image={item.responsiveImage}
-            className={`w-full h-52 sm:h-60 lg:h-64 object-cover`}
+            className={`w-full object-cover ${imageHeightClass}`}
             priority={index === 0} // Only prioritize first item
           />
         ) : (

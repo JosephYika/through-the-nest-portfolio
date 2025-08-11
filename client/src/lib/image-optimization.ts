@@ -128,3 +128,26 @@ export const getWeddingThumbnail = (): ResponsiveImage => {
   const thumbnailImg = weddingImages[5]; // BLVD9185 - most representative
   return createResponsiveImage(thumbnailImg.path, thumbnailImg.alt, thumbnailImg.lqipColor);
 };
+
+// Get optimized romantic image for portfolio
+export const getRomanticImage = (): ResponsiveImage => {
+  return {
+    src: "/images/featured/romantic-main-medium.webp",
+    srcSet: `
+      /images/featured/romantic-main-thumbnail.webp 400w,
+      /images/featured/romantic-main-medium.webp 800w,
+      /images/featured/romantic-main-large.webp 1600w,
+      /images/featured/romantic-main-original.webp 2000w
+    `.replace(/\s+/g, ' ').trim(),
+    sizes: `
+      (max-width: 640px) 400px,
+      (max-width: 1024px) 800px,
+      (max-width: 1600px) 1600px,
+      2000px
+    `.replace(/\s+/g, ' ').trim(),
+    lqip: generateLQIP('#f4f1f0'),
+    alt: "Romantic Photography - Love Stories",
+    width: 1600,
+    height: 2400
+  };
+};
