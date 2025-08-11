@@ -62,7 +62,7 @@ export default function VirtualizedWeddingGallery({ onImageClick }: VirtualizedW
   return (
     <div ref={containerRef} className="space-y-4">
       {/* Images Grid */}
-      <div className="masonry-grid">
+      <div className="wedding-grid">
         {visibleImages.map((image, index) => (
           <div
             key={`wedding-virtualized-${index}`}

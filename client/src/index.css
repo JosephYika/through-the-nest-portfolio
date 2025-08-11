@@ -230,6 +230,20 @@
   }
 }
 
+/* Wedding-specific grid - 2 columns on desktop */
+.wedding-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .wedding-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
 .portfolio-item {
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   contain: layout style paint;
