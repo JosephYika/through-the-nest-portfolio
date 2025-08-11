@@ -21,10 +21,17 @@ RESEND_API_KEY=re_your_actual_api_key_here
 CONTACT_EMAIL=austin@throughthenest.com
 ```
 
-### 4. Domain Setup (Optional but Recommended)
-- In Resend, add your domain (e.g., throughthenest.com)
-- Add the DNS records they provide
-- This allows emails to come from your domain instead of resend.dev
+### 4. Vercel Deployment
+Your site is hosted at: `through-the-nest.vercel.app`
+
+**Current Setup:**
+- Emails come from `onboarding@resend.dev` (Resend's verified domain)
+- This works immediately without domain verification
+- Recipients can reply directly to your clients
+
+**Optional Domain Setup (Future):**
+- If you get a custom domain (e.g., throughthenest.com), you can verify it in Resend
+- This would allow emails to come from your domain instead of resend.dev
 
 ## 🔧 Alternative: Gmail SMTP Setup
 

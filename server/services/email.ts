@@ -69,7 +69,7 @@ Sent on: ${new Date().toLocaleDateString('en-GB')}
 
   try {
     const result = await resend.emails.send({
-      from: 'Through The Nest <noreply@throughthenest.com>', // You'll need to verify this domain
+      from: 'Through The Nest <onboarding@resend.dev>', // Using Resend's verified domain for Vercel
       to: [process.env.CONTACT_EMAIL || 'austin@throughthenest.com'], // Your actual email
       subject: `New Contact Form: ${service} inquiry from ${firstName} ${lastName}`,
       html: htmlContent,
