@@ -2,21 +2,21 @@ export default function FeaturedWorks() {
   const featuredWorks = [
     {
       id: 1,
-      image: "/images/CultureMain_1754647610299.JPG",
+      image: "",
       title: "Cultural Heritage",
       description: "Celebrating traditions through intimate portraiture",
       category: "culture"
     },
     {
       id: 2,
-      image: "/images/OldMoneyMain_1754647610299.JPG",
+      image: "",
       title: "Lifestyle Elegance",
       description: "Urban photography with timeless appeal",
       category: "lifestyle"
     },
     {
       id: 3,
-      image: "/images/RomanticMain_1754647610300.jpg",
+      image: "",
       title: "Romantic Moments",
       description: "Capturing love stories with artistic vision",
       category: "romantic"
