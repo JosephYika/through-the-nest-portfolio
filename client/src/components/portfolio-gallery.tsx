@@ -454,8 +454,11 @@ function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredIma
     }
   }, [activeFilter, portfolioItems, filteredImages, isVisible, openLightbox]);
 
+  // Choose grid class based on filter
+  const gridClass = activeFilter === 'all' ? 'masonry-grid' : 'category-grid';
+  
   return (
-    <div ref={gridRef} className="masonry-grid fade-in" id="portfolio-grid">
+    <div ref={gridRef} className={`${gridClass} fade-in`} id="portfolio-grid">
       {gridContent}
     </div>
   );

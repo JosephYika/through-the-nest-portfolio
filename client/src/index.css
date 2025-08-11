@@ -188,21 +188,43 @@
 .portfolio-item:nth-child(8) { transition-delay: 0.4s; }
 .portfolio-item:nth-child(9) { transition-delay: 0.45s; }
 
+/* Default masonry grid for "All Work" view - larger cards */
 .masonry-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
 }
 
 @media (min-width: 640px) {
   .masonry-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.25rem;
   }
 }
 
 @media (min-width: 768px) {
   .masonry-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Category-specific grid for individual categories - 3 columns on desktop */
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .category-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
