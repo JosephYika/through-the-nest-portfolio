@@ -204,22 +204,64 @@ export default function PortfolioGallery() {
         
         {/* Filter Buttons */}
         <div className="mb-8 sm:mb-12 fade-in">
-          {/* Mobile Filter Row - Only 3 essential categories */}
+          {/* Mobile Filter Row - Core categories + View More */}
           <div className="block sm:hidden">
-            <div className="flex flex-wrap justify-center gap-2 mb-4">
-              {getMobileVisibleFilters().map((filter) => (
-                <button
-                  key={filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                  className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
-                    activeFilter === filter.id
-                      ? 'bg-soft-gold text-white'
-                      : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
-                  }`}
-                >
-                  {filter.label}
-                </button>
-              ))}
+            <div className="flex flex-col items-center gap-3 mb-4">
+              {/* Core mobile filters */}
+              <div className="flex flex-wrap justify-center gap-2">
+                {getMobileVisibleFilters().map((filter) => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setActiveFilter(filter.id)}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                      activeFilter === filter.id
+                        ? 'bg-soft-gold text-white'
+                        : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+              
+              {/* View More/Less Toggle - Mobile */}
+              <button
+                onClick={() => setShowAllFilters(!showAllFilters)}
+                className="px-4 py-2 rounded-full font-medium transition-all duration-300 bg-gray-100 dark:bg-gray-600 text-charcoal dark:text-white border border-gray-200 dark:border-gray-500 hover:bg-soft-gold hover:text-white hover:border-soft-gold flex items-center justify-center gap-2 text-sm w-fit"
+              >
+                <span>{showAllFilters ? 'View Less' : 'View More'}</span>
+                <i className={`fas transition-transform duration-300 text-xs ${
+                  showAllFilters ? 'fa-chevron-up rotate-180' : 'fa-chevron-down'
+                }`}></i>
+              </button>
+              
+              {/* Additional mobile filters - when expanded */}
+              <div className={`flex flex-wrap justify-center gap-2 transition-all duration-500 ease-in-out overflow-hidden ${
+                showAllFilters 
+                  ? 'max-h-24 opacity-100 transform translate-y-0' 
+                  : 'max-h-0 opacity-0 transform -translate-y-4'
+              }`}>
+                {additionalFilters.map((filter, index) => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setActiveFilter(filter.id)}
+                    className={`px-4 py-2 rounded-full font-medium transition-all duration-300 transform text-sm ${
+                      showAllFilters 
+                        ? `translate-y-0 opacity-100 delay-[${index * 50}ms]` 
+                        : 'translate-y-4 opacity-0'
+                    } ${
+                      activeFilter === filter.id
+                        ? 'bg-soft-gold text-white'
+                        : 'bg-white dark:bg-gray-700 text-charcoal dark:text-white border border-gray-200 dark:border-gray-600 hover:bg-soft-gold hover:text-white hover:border-soft-gold'
+                    }`}
+                    style={{
+                      transitionDelay: showAllFilters ? `${index * 50}ms` : '0ms'
+                    }}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
