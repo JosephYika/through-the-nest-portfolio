@@ -136,7 +136,7 @@ export default function PortfolioGallery() {
       image: "/attached_assets/BLVD9998_1754914886741_medium.webp", // Fallback
       responsiveImage: birthdayImage, // Use optimized responsive image
       images: ["/attached_assets/BLVD9998_1754914886741_large.webp"],
-      title: "First Birthday Joy",
+      title: "Birthdays",
       category: "birthday",
       description: "Birthday Photography"
     }
@@ -461,7 +461,7 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
         className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
         onClick={onClick}
       >
-        {(item.category === 'wedding' || item.category === 'romantic') && item.responsiveImage ? (
+        {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
           <OptimizedLazyImage 
             image={item.responsiveImage}
             className={`w-full object-cover ${imageHeightClass}`}
