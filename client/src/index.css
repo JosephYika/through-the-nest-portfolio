@@ -375,15 +375,3 @@ img[loading="lazy"] {
   }
 }
 
-/* Featured Works Animation */
-.featured-work-fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.featured-work-fade-up.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
