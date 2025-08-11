@@ -2,21 +2,21 @@ export default function FeaturedWorks() {
   const featuredWorks = [
     {
       id: 1,
-      image: "",
+      image: "/images/featured/culture-main.webp",
       title: "Cultural Heritage",
       description: "Celebrating traditions through intimate portraiture",
       category: "culture"
     },
     {
       id: 2,
-      image: "",
+      image: "/images/featured/lifestyle-main.webp",
       title: "Lifestyle Elegance",
       description: "Urban photography with timeless appeal",
       category: "lifestyle"
     },
     {
       id: 3,
-      image: "",
+      image: "/images/featured/romantic-main.webp",
       title: "Romantic Moments",
       description: "Capturing love stories with artistic vision",
       category: "romantic"
