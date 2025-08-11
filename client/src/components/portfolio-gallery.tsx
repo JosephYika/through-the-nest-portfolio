@@ -460,7 +460,7 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
       style={cardStyle}
     >
       <div 
-        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
+        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
         onClick={onClick}
       >
         {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
