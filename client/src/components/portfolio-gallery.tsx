@@ -472,8 +472,8 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
     }
   }, [item.category, isImageView]);
 
-  // Object position for corporate images to show top portion (faces)
-  const objectPosition = item.category === 'corporate' ? 'object-top' : 'object-center';
+  // Object position for corporate images to show head and chest with head closer to top
+  const objectPosition = item.category === 'corporate' ? 'object-[center_top]' : 'object-center';
 
   return (
     <div
