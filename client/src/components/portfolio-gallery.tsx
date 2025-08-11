@@ -161,7 +161,7 @@ export default function PortfolioGallery() {
     },
     {
       id: 7,
-      image: "/BLVD9660_1754915875196_medium.webp",
+      image: "/BLVD9636_1754915869382_medium.webp",
       images: [
         "/BLVD9535-2_1754915869380_large.webp",
         "/BLVD9636_1754915869382_large.webp",
