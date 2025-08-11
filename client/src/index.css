@@ -226,7 +226,7 @@
 /* About Section Entrance Animations */
 .about-image-fade {
   opacity: 0;
-  transform: translateX(-50px) scale(0.95);
+  transform: translateX(-40px) scale(0.95);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -237,7 +237,7 @@
 
 .about-content-slide {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -248,8 +248,8 @@
 
 .about-paragraph {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .about-paragraph.animate {
@@ -259,7 +259,7 @@
 
 .about-stats {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -270,8 +270,8 @@
 
 .about-stat {
   opacity: 0;
-  transform: scale(0.8) translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: scale(0.9) translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .about-stat.animate {
@@ -282,7 +282,7 @@
 /* Services Section Entrance Animations */
 .services-header {
   opacity: 0;
-  transform: translateY(-30px);
+  transform: translateY(-40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -293,7 +293,7 @@
 
 .service-card-entrance {
   opacity: 0;
-  transform: translateY(50px) scale(0.95);
+  transform: translateY(40px) scale(0.95);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -305,7 +305,7 @@
 .service-icon {
   opacity: 0;
   transform: scale(0) rotate(180deg);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .service-icon.animate {
@@ -315,8 +315,8 @@
 
 .service-feature {
   opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .service-feature.animate {
@@ -326,8 +326,8 @@
 
 .service-cta {
   opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .service-cta.animate {
@@ -361,7 +361,7 @@
 .testimonial-quote-icon {
   opacity: 0;
   transform: scale(0) rotate(-180deg);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .testimonial-quote-icon.animate {
@@ -382,8 +382,8 @@
 
 .testimonial-author {
   opacity: 0;
-  transform: translateY(20px) scale(0.9);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .testimonial-author.animate {
@@ -393,8 +393,8 @@
 
 .testimonial-dots {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .testimonial-dots.animate {
@@ -405,7 +405,7 @@
 .testimonial-dot {
   opacity: 0;
   transform: scale(0);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .testimonial-dot.animate {
@@ -518,10 +518,14 @@ img[loading="lazy"] {
   }
   
   .about-content-slide {
-    transform: translateY(20px); /* Reduce horizontal movement */
+    transform: translateY(30px); /* Consistent vertical movement */
   }
   
   .service-card-entrance {
+    transform: translateY(30px) scale(0.98);
+  }
+  
+  .testimonial-carousel-entrance {
     transform: translateY(30px) scale(0.98);
   }
   
