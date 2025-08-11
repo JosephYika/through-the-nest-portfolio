@@ -68,6 +68,15 @@
 - ✓ Optimized animations for mobile with reduced motion and simplified transforms
 - ✓ Left "Get in Touch" section unchanged as requested
 - ✓ All animations use intersection observer for performance and trigger only when visible
+- ✓ Standardized timing: 0.5s duration for Services section with 0.2s staggered delays
+- ✓ Refined hover effects: Removed card scaling, enhanced button interactions only
+
+## Birthday Category Addition (August 11, 2025)
+- ✓ Optimized new birthday image using sharp-cli compression (75% quality)
+- ✓ Generated 4 responsive sizes: thumb (9.7KB), medium (25KB), large (58KB), original (78KB)
+- ✓ Added getBirthdayImage() function with responsive srcset and LQIP placeholder
+- ✓ Created "First Birthday Joy" portfolio item in birthday category
+- ✓ Maintains consistency with other optimized category images
 
 # User Preferences
 

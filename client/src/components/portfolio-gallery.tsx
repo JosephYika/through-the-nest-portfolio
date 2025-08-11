@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import OptimizedLazyImage from "./OptimizedLazyImage";
 import VirtualizedWeddingGallery from "./VirtualizedWeddingGallery";
-import { getWeddingThumbnail, getWeddingImages, getRomanticImage } from "@/lib/image-optimization";
+import { getWeddingThumbnail, getWeddingImages, getRomanticImage, getBirthdayImage } from "@/lib/image-optimization";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Optimized lazy loading image component with intersection observer
@@ -79,6 +79,7 @@ export default function PortfolioGallery() {
   const weddingThumbnail = getWeddingThumbnail();
   const weddingImages = getWeddingImages();
   const romanticImage = getRomanticImage();
+  const birthdayImage = getBirthdayImage();
 
   const portfolioItems = [
     {
@@ -129,6 +130,15 @@ export default function PortfolioGallery() {
       title: "Love Stories",
       category: "romantic",
       description: "Romantic Photography"
+    },
+    {
+      id: 6,
+      image: "/attached_assets/BLVD9998_1754914886741_medium.webp", // Fallback
+      responsiveImage: birthdayImage, // Use optimized responsive image
+      images: ["/attached_assets/BLVD9998_1754914886741_large.webp"],
+      title: "First Birthday Joy",
+      category: "birthday",
+      description: "Birthday Photography"
     }
   ];
 

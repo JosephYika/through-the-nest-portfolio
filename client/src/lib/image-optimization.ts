@@ -151,3 +151,26 @@ export const getRomanticImage = (): ResponsiveImage => {
     height: 2400
   };
 };
+
+// Get optimized birthday image for portfolio
+export const getBirthdayImage = (): ResponsiveImage => {
+  return {
+    src: "/attached_assets/BLVD9998_1754914886741_medium.webp",
+    srcSet: `
+      /attached_assets/BLVD9998_1754914886741_thumb.webp 400w,
+      /attached_assets/BLVD9998_1754914886741_medium.webp 800w,
+      /attached_assets/BLVD9998_1754914886741_large.webp 1600w,
+      /attached_assets/BLVD9998_1754914886741_original.webp 2000w
+    `.replace(/\s+/g, ' ').trim(),
+    sizes: `
+      (max-width: 640px) 400px,
+      (max-width: 1024px) 800px,
+      (max-width: 1600px) 1600px,
+      2000px
+    `.replace(/\s+/g, ' ').trim(),
+    lqip: generateLQIP('#fdf0f4'),
+    alt: "First Birthday Celebration Photography",
+    width: 1600,
+    height: 1067
+  };
+};
