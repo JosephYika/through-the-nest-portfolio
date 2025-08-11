@@ -176,6 +176,21 @@ export default function PortfolioGallery() {
       title: "Party & Events",
       category: "party",
       description: "Party Photography"
+    },
+    {
+      id: 8,
+      image: "/BLVD9660_1754915875196_medium.webp",
+      images: [
+        "/BLVD9535-2_1754915869380_large.webp",
+        "/BLVD9636_1754915869382_large.webp",
+        "/BLVD9640_1754915875194_large.webp",
+        "/BLVD9660_1754915875196_large.webp",
+        "/Student_2_1754915879893_large.webp",
+        "/Student_22_1754915879894_large.webp"
+      ],
+      title: "Professional Headshots",
+      category: "corporate",
+      description: "Corporate Photography"
     }
   ];
 
