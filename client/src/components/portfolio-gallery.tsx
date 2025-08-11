@@ -106,7 +106,12 @@ export default function PortfolioGallery() {
         "/IMG_3687_1754916458214_large.webp",
         "/IMG_4385_1754916467536_large.webp",
         "/IMG_3688_1754916467537_large.webp",
-        "/IMG_4384_1754916467538_large.webp"
+        "/IMG_4384_1754916467538_large.webp",
+        "/Udee-11_1754918187986_large.webp",
+        "/Udee-22_1754918187987_large.webp",
+        "/Udee-33_1754918187988_large.webp",
+        "/Udee-BW-11_1754918187989_large.webp",
+        "/Udee-BW-33_1754918187990_large.webp"
       ],
       title: "Floral Poetry",
       category: "portrait",
