@@ -82,8 +82,16 @@
 - ✓ Implemented dual grid system: masonry-grid for "All Work", category-grid for individual categories
 - ✓ "All Work" section: Maintains original larger portfolio cards with auto-fit layout
 - ✓ Category views: Shows 3 small cards per row on desktop (1 mobile, 2 tablet, 3 desktop)
+- ✓ Wedding-specific grid: 2 columns on desktop with proper centering instead of left-squeeze
 - ✓ Dynamic grid switching: Automatically changes layout based on active filter
 - ✓ Removed extra portfolio items to keep clean "All Work" presentation
+
+## Corporate Portfolio Addition (August 11, 2025)
+- ✓ Added 6 professional corporate images: 4 headshots with tropical backdrop, 2 student portraits
+- ✓ Optimized all corporate images with sharp-cli: thumbnail (~12-15KB), medium (~25-35KB), large (~60-80KB)
+- ✓ Professional headshots: Executive portraits with clean tropical leaf background
+- ✓ Student portraits: Academic headshots with clean grey backgrounds
+- ✓ Corporate category displays 3 images per row on desktop with proper grid layout
 
 # User Preferences
 

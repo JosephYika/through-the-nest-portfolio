@@ -139,6 +139,54 @@ export default function PortfolioGallery() {
       title: "Birthdays",
       category: "birthday",
       description: "Birthday Photography"
+    },
+    {
+      id: 7,
+      image: "/BLVD9535-2_1754915869380_medium.webp",
+      images: ["/BLVD9535-2_1754915869380_large.webp"],
+      title: "Professional Headshots",
+      category: "corporate",
+      description: "Corporate Photography"
+    },
+    {
+      id: 8,
+      image: "/BLVD9636_1754915869382_medium.webp",
+      images: ["/BLVD9636_1754915869382_large.webp"],
+      title: "Executive Portraits",
+      category: "corporate",
+      description: "Corporate Photography"
+    },
+    {
+      id: 9,
+      image: "/BLVD9640_1754915875194_medium.webp",
+      images: ["/BLVD9640_1754915875194_large.webp"],
+      title: "Business Professionals",
+      category: "corporate",
+      description: "Corporate Photography"
+    },
+    {
+      id: 10,
+      image: "/BLVD9660_1754915875196_medium.webp",
+      images: ["/BLVD9660_1754915875196_large.webp"],
+      title: "Corporate Leadership",
+      category: "corporate",
+      description: "Corporate Photography"
+    },
+    {
+      id: 11,
+      image: "/Student_2_1754915879893_medium.webp",
+      images: ["/Student_2_1754915879893_large.webp"],
+      title: "Student Portraits",
+      category: "corporate",
+      description: "Corporate Photography"
+    },
+    {
+      id: 12,
+      image: "/Student_22_1754915879894_medium.webp",
+      images: ["/Student_22_1754915879894_large.webp"],
+      title: "Academic Headshots",
+      category: "corporate",
+      description: "Corporate Photography"
     }
   ];
 
