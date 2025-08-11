@@ -133,9 +133,9 @@ export default function PortfolioGallery() {
     },
     {
       id: 6,
-      image: "/attached_assets/BLVD9998_1754914886741_medium.webp", // Fallback
+      image: "/BLVD9998_1754914886741_medium.webp", // Fallback
       responsiveImage: birthdayImage, // Use optimized responsive image
-      images: ["/attached_assets/BLVD9998_1754914886741_large.webp"],
+      images: ["/BLVD9998_1754914886741_large.webp"],
       title: "Birthdays",
       category: "birthday",
       description: "Birthday Photography"
