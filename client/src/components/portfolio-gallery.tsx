@@ -479,10 +479,13 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
       case 'culture': return 'h-60 sm:h-72 lg:h-80';
       case 'lifestyle': return 'h-56 sm:h-64 lg:h-72';
       case 'portrait': return 'h-72 sm:h-80 lg:h-[28rem]';
-      case 'corporate': return 'h-64 sm:h-72 lg:h-80';
+      case 'corporate': return 'h-72 sm:h-80 lg:h-96';
       default: return 'h-52 sm:h-60 lg:h-64';
     }
   }, [item.category, isImageView]);
+
+  // Object position for corporate images to show top portion (faces)
+  const objectPosition = item.category === 'corporate' ? 'object-top' : 'object-center';
 
   return (
     <div
@@ -497,14 +500,14 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
         {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
           <OptimizedLazyImage 
             image={item.responsiveImage}
-            className={`w-full object-cover ${imageHeightClass}`}
+            className={`w-full object-cover ${objectPosition} ${imageHeightClass}`}
             priority={index === 0} // Only prioritize first item
           />
         ) : (
           <LazyImage 
             src={item.image} 
             alt={item.title}
-            className={`w-full object-cover ${imageHeightClass}`}
+            className={`w-full object-cover ${objectPosition} ${imageHeightClass}`}
           />
         )}
         {!isImageView && (
