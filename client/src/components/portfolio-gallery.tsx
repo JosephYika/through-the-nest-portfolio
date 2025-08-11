@@ -165,20 +165,6 @@ export default function PortfolioGallery() {
     },
     {
       id: 7,
-      image: "/BLVD0440_1754919606075_medium.webp",
-      images: [
-        "/BLVD0440_1754919606075_large.webp",
-        "/BLVD0449_1754919606076_large.webp",
-        "/BLVD0569_1754919606076_large.webp",
-        "/BLVD0386_1754919606077_large.webp",
-        "/BLVD0421_1754919606078_large.webp"
-      ],
-      title: "Party & Events",
-      category: "party",
-      description: "Party Photography"
-    },
-    {
-      id: 8,
       image: "/BLVD9640_1754915875194_medium.webp",
       images: [
         "/BLVD9535-2_1754915869380_large.webp",
@@ -191,6 +177,20 @@ export default function PortfolioGallery() {
       title: "Professional Headshots",
       category: "corporate",
       description: "Corporate Photography"
+    },
+    {
+      id: 8,
+      image: "/BLVD0440_1754919606075_medium.webp",
+      images: [
+        "/BLVD0440_1754919606075_large.webp",
+        "/BLVD0449_1754919606076_large.webp",
+        "/BLVD0569_1754919606076_large.webp",
+        "/BLVD0386_1754919606077_large.webp",
+        "/BLVD0421_1754919606078_large.webp"
+      ],
+      title: "Party & Events",
+      category: "party",
+      description: "Party Photography"
     }
   ];
 
