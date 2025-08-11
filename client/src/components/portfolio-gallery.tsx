@@ -460,29 +460,26 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
       style={cardStyle}
     >
       <div 
-        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden cursor-pointer will-change-transform group transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30"
+        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden hover:-translate-y-0.5 transition-transform duration-300 cursor-pointer will-change-transform"
         onClick={onClick}
       >
-        <div className="relative overflow-hidden">
-          {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
-            <OptimizedLazyImage 
-              image={item.responsiveImage}
-              className={`w-full object-cover ${objectPosition} ${imageHeightClass} transition-transform duration-500 ease-out group-hover:scale-105`}
-              priority={index === 0} // Only prioritize first item
-            />
-          ) : (
-            <LazyImage 
-              src={item.image} 
-              alt={item.title}
-              className={`w-full object-cover ${objectPosition} ${imageHeightClass} transition-transform duration-500 ease-out group-hover:scale-105`}
-            />
-          )}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 ease-out"></div>
-        </div>
+        {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
+          <OptimizedLazyImage 
+            image={item.responsiveImage}
+            className={`w-full object-cover ${objectPosition} ${imageHeightClass}`}
+            priority={index === 0} // Only prioritize first item
+          />
+        ) : (
+          <LazyImage 
+            src={item.image} 
+            alt={item.title}
+            className={`w-full object-cover ${objectPosition} ${imageHeightClass}`}
+          />
+        )}
         {!isImageView && (
           <div className="p-6">
-            <h3 className="font-copernicus text-xl font-bold mb-2 group-hover:text-soft-gold transition-colors duration-300">{item.title}</h3>
-            <p className="text-gray-600 dark:text-gray-300 text-sm group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">{item.description}</p>
+            <h3 className="font-copernicus text-xl font-bold mb-2">{item.title}</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>
           </div>
         )}
       </div>
