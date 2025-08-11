@@ -139,6 +139,38 @@ export default function PortfolioGallery() {
       title: "First Birthday Joy",
       category: "birthday",
       description: "Birthday Photography"
+    },
+    {
+      id: 7,
+      image: "/attached_assets/Udee-22_1754654628221.webp",
+      images: ["/attached_assets/Udee-22_1754654628221.webp"],
+      title: "Second Birthday Magic",
+      category: "birthday",
+      description: "Birthday Photography"
+    },
+    {
+      id: 8,
+      image: "/attached_assets/BLVD9174_1754654186493.webp",
+      images: ["/attached_assets/BLVD9174_1754654186493.webp"],
+      title: "Third Birthday Celebration",
+      category: "birthday",
+      description: "Birthday Photography"
+    },
+    {
+      id: 9,
+      image: "/attached_assets/CultureMain_1754908444456.JPG",
+      images: ["/attached_assets/CultureMain_1754908444456.JPG"],
+      title: "Traditional Celebration",
+      category: "culture",
+      description: "Cultural Photography"
+    },
+    {
+      id: 10,
+      image: "/attached_assets/OldMoneyMain_1754908438456.JPG",
+      images: ["/attached_assets/OldMoneyMain_1754908438456.JPG"],
+      title: "Heritage Portrait",
+      category: "culture",
+      description: "Cultural Photography"
     }
   ];
 
