@@ -162,6 +162,20 @@ export default function PortfolioGallery() {
       title: "Birthdays",
       category: "birthday",
       description: "Birthday Photography"
+    },
+    {
+      id: 7,
+      image: "/BLVD0440_1754919606075_medium.webp",
+      images: [
+        "/BLVD0440_1754919606075_large.webp",
+        "/BLVD0449_1754919606076_large.webp",
+        "/BLVD0569_1754919606076_large.webp",
+        "/BLVD0386_1754919606077_large.webp",
+        "/BLVD0421_1754919606078_large.webp"
+      ],
+      title: "Party & Events",
+      category: "party",
+      description: "Party Photography"
     }
   ];
 
