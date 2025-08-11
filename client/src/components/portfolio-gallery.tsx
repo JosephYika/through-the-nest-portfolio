@@ -362,7 +362,9 @@ export default function PortfolioGallery() {
         </div>
         
         {/* Portfolio Grid */}
-        <PortfolioGrid activeFilter={activeFilter} portfolioItems={portfolioItems} openLightbox={openLightbox} filteredImages={filteredImages} />
+        <div className="pt-4">
+          <PortfolioGrid activeFilter={activeFilter} portfolioItems={portfolioItems} openLightbox={openLightbox} filteredImages={filteredImages} />
+        </div>
       </div>
     </section>
   );
@@ -424,7 +426,7 @@ function PortfolioGrid({ activeFilter, portfolioItems, openLightbox, filteredIma
   const gridClass = activeFilter === 'all' ? 'masonry-grid' : activeFilter === 'wedding' ? 'wedding-grid' : 'category-grid';
   
   return (
-    <div ref={gridRef} className={`${gridClass} fade-in`} id="portfolio-grid">
+    <div ref={gridRef} className={`${gridClass} fade-in`} id="portfolio-grid" style={{ overflow: 'visible' }}>
       {gridContent}
     </div>
   );
@@ -460,7 +462,7 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
       style={cardStyle}
     >
       <div 
-        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-200 cursor-pointer"
+        className="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden cursor-pointer"
         onClick={onClick}
       >
         {(item.category === 'wedding' || item.category === 'romantic' || item.category === 'birthday') && item.responsiveImage ? (
