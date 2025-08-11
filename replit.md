@@ -58,6 +58,15 @@
 - ✓ Added responsive image loading for Romantic category matching wedding optimization
 - ✓ Improved CSS containment and will-change properties for better paint performance
 
+## Section Entrance Animations (August 11, 2025)
+- ✓ Added scroll-triggered entrance animations for "Our Story" section
+- ✓ Implemented staggered animations for story paragraphs and statistics
+- ✓ Created entrance animations for "Services & Packages" section
+- ✓ Added cascading animations for service cards with icon rotations and feature slides
+- ✓ Optimized animations for mobile with reduced motion and simplified transforms
+- ✓ Left "Get in Touch" section unchanged as requested
+- ✓ All animations use intersection observer for performance and trigger only when visible
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
