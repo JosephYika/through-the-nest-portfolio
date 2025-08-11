@@ -2,19 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/index.ts",
-      "use": "@vercel/node",
+      "src": "package.json",
+      "use": "@vercel/static-build",
       "config": {
-        "includeFiles": ["server/**"],
-        "maxLambdaSize": "50mb"
+        "distDir": "dist/public"
       }
     },
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "src": "server/index.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -23,11 +19,20 @@
       "dest": "/server/index.ts"
     },
     {
+      "src": "/images/(.*)",
+      "dest": "/dist/public/images/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|webp|svg|ico|woff|woff2|ttf|eot))",
+      "dest": "/dist/public/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/client/$1"
+      "dest": "/dist/public/index.html"
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "buildCommand": "npm run build"
 }
