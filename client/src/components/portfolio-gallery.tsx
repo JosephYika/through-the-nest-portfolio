@@ -120,7 +120,11 @@ export default function PortfolioGallery() {
     {
       id: 3,
       image: "/images/OldMoneyMain_1754647610299.JPG",
-      images: ["/images/OldMoneyMain_1754647610299.JPG"],
+      images: [
+        "/images/OldMoneyMain_1754647610299.JPG",
+        "/K5_1754919425083_large.webp",
+        "/S1_1754919425084_large.webp"
+      ],
       title: "Urban Elegance",
       category: "lifestyle",
       description: "Lifestyle Photography"
