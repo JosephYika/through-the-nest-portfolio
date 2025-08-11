@@ -335,6 +335,84 @@
   transform: translateY(0) scale(1);
 }
 
+/* Testimonials Section Entrance Animations */
+.testimonial-header {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonial-header.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-carousel-entrance {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonial-carousel-entrance.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-quote-icon {
+  opacity: 0;
+  transform: scale(0) rotate(-180deg);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonial-quote-icon.animate {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.testimonial-quote-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.testimonial-quote-text.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-author {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonial-author.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-dots {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.testimonial-dots.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-dot {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.testimonial-dot.animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Enhanced loading spinner */
 .loading-spinner {
   border-top-color: hsl(38, 42%, 62%);
@@ -461,7 +539,14 @@ img[loading="lazy"] {
     .service-card-entrance,
     .service-icon,
     .service-feature,
-    .service-cta {
+    .service-cta,
+    .testimonial-header,
+    .testimonial-carousel-entrance,
+    .testimonial-quote-icon,
+    .testimonial-quote-text,
+    .testimonial-author,
+    .testimonial-dots,
+    .testimonial-dot {
       animation: none !important;
       transition: none !important;
       opacity: 1 !important;

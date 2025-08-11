@@ -63,6 +63,8 @@
 - ✓ Implemented staggered animations for story paragraphs and statistics
 - ✓ Created entrance animations for "Services & Packages" section
 - ✓ Added cascading animations for service cards with icon rotations and feature slides
+- ✓ Added entrance animations for "What Clients Say" testimonial section
+- ✓ Implemented quote icon rotation, text fade-up, and staggered dot animations
 - ✓ Optimized animations for mobile with reduced motion and simplified transforms
 - ✓ Left "Get in Touch" section unchanged as requested
 - ✓ All animations use intersection observer for performance and trigger only when visible
