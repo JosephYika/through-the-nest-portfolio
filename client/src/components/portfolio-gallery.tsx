@@ -179,7 +179,7 @@ export default function PortfolioGallery() {
     },
     {
       id: 8,
-      image: "/BLVD9660_1754915875196_medium.webp",
+      image: "/BLVD9640_1754915875194_medium.webp",
       images: [
         "/BLVD9535-2_1754915869380_large.webp",
         "/BLVD9636_1754915869382_large.webp",
@@ -485,7 +485,7 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
       case 'culture': return 'h-60 sm:h-72 lg:h-80';
       case 'lifestyle': return 'h-56 sm:h-64 lg:h-72';
       case 'portrait': return 'h-72 sm:h-80 lg:h-[28rem]';
-      case 'corporate': return 'h-72 sm:h-80 lg:h-96';
+      case 'corporate': return 'h-80 sm:h-96 lg:h-[28rem]';
       default: return 'h-52 sm:h-60 lg:h-64';
     }
   }, [item.category, isImageView]);
