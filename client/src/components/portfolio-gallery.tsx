@@ -111,7 +111,13 @@ export default function PortfolioGallery() {
         "/Udee-22_1754918187987_large.webp",
         "/Udee-33_1754918187988_large.webp",
         "/Udee-BW-11_1754918187989_large.webp",
-        "/Udee-BW-33_1754918187990_large.webp"
+        "/Udee-BW-33_1754918187990_large.webp",
+        "/BLVD9535-2_1754915869380_large.webp",
+        "/BLVD9636_1754915869382_large.webp",
+        "/BLVD9640_1754915875194_large.webp",
+        "/BLVD9660_1754915875196_large.webp",
+        "/Student_2_1754915879893_large.webp",
+        "/Student_22_1754915879894_large.webp"
       ],
       title: "Floral Poetry",
       category: "portrait",
