@@ -112,12 +112,10 @@ export default function PortfolioGallery() {
         "/Udee-33_1754918187988_large.webp",
         "/Udee-BW-11_1754918187989_large.webp",
         "/Udee-BW-33_1754918187990_large.webp",
-        "/BLVD9535-2_1754915869380_large.webp",
-        "/BLVD9636_1754915869382_large.webp",
-        "/BLVD9640_1754915875194_large.webp",
-        "/BLVD9660_1754915875196_large.webp",
-        "/Student_2_1754915879893_large.webp",
-        "/Student_22_1754915879894_large.webp"
+        "/IMG-WA0003_1754996864371_large.webp",
+        "/IMG-WA0004_1754996864373_large.webp",
+        "/IMG-WA0005_1754996864374_large.webp",
+        "/IMG-WA0006_1754996864375_large.webp"
       ],
       title: "Floral Poetry",
       category: "portrait",
@@ -496,8 +494,49 @@ function PortfolioCard({ item, index, isVisible, onClick, isImageView = false }:
     }
   }, [item.category, isImageView]);
 
-  // Object position for corporate images to show head and chest with head closer to top
-  const objectPosition = item.category === 'corporate' ? 'object-[center_top]' : 'object-center';
+  // Custom positioning for specific images and categories
+  const getObjectPosition = () => {
+    // Special positioning for specific portrait images (18th and 19th in portrait category)
+    if (item.category === 'portrait' && isImageView) {
+      const portraitImages = [
+        "/images/SidePortraitMain_1754647610300.JPG",
+        "/images/portrait-01.jpg",
+        "/images/portrait-02.jpg", 
+        "/images/portrait-03.jpg",
+        "/images/portrait-04.jpg",
+        "/IMG_1436_1754916458211_large.webp",
+        "/IMG_1442_1754916458213_large.webp",
+        "/IMG_3687_1754916458214_large.webp", 
+        "/IMG_4385_1754916467536_large.webp",
+        "/IMG_3688_1754916467537_large.webp",
+        "/IMG_4384_1754916467538_large.webp",
+        "/Udee-11_1754918187986_large.webp",
+        "/Udee-22_1754918187987_large.webp",
+        "/Udee-33_1754918187988_large.webp",
+        "/Udee-BW-11_1754918187989_large.webp",
+        "/Udee-BW-33_1754918187990_large.webp",
+        "/IMG-WA0003_1754996864371_large.webp", // Image 17
+        "/IMG-WA0004_1754996864373_large.webp", // Image 18 - needs face at top
+        "/IMG-WA0005_1754996864374_large.webp", // Image 19 - needs face at top
+        "/IMG-WA0006_1754996864375_large.webp"
+      ];
+      
+      const imageIndex = portraitImages.indexOf(item.image);
+      // Images 18 and 19 (indices 17 and 18) need face at top positioning
+      if (imageIndex === 17 || imageIndex === 18) {
+        return 'object-top';
+      }
+    }
+    
+    // Corporate images positioning
+    if (item.category === 'corporate') {
+      return 'object-[center_top]';
+    }
+    
+    return 'object-center';
+  };
+  
+  const objectPosition = getObjectPosition();
 
   return (
     <div
